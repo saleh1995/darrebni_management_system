@@ -28,7 +28,7 @@ Route::prefix('brunch')->group(function () {
     Route::get('/show/{id}', [BrunchController::class, 'show']);
     Route::post('/delete/{id}', [BrunchController::class, 'delete']);
     Route::post('/update/{id}', [BrunchController::class, 'update']);
-  });
+});
 
 // Auth Route
 Route::post('login', [AuthController::class, 'login']);
@@ -37,5 +37,3 @@ Route::middleware('auth:sanctum')->post('logout', [Authcontroller::class, 'logou
 
 Route::resource('/course', CourseController::class);
 Route::resource('/trainee', TraineeController::class);
-
-
