@@ -17,7 +17,7 @@ class CourseController extends Controller
     public function index()
     {
         $data = Course::all();
-        return $this->ApiResponce(CourseResource::collection($data), 'All Courses');
+        return $this->ApiResponse(CourseResource::collection($data), 'All Courses');
     }
 
     /**
@@ -29,7 +29,7 @@ class CourseController extends Controller
             'name' => $request->name,
             'prefix' => $request->prefix,
         ]);
-        return $this->ApiResponce(CourseResource::make($data), 'Course Stored Successfully');
+        return $this->ApiResponse(CourseResource::make($data), 'Course Stored Successfully');
     }
 
     /**
@@ -38,7 +38,7 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         $data = Course::findOrFail($course->id);
-        return $this->ApiResponce(CourseResource::make($data), 'Course Showed Successfully');
+        return $this->ApiResponse(CourseResource::make($data), 'Course Showed Successfully');
     }
 
     /**
@@ -50,7 +50,7 @@ class CourseController extends Controller
             'name' => $request->name,
             'prefix' => $request->prefix,
         ]);
-        return $this->ApiResponce(CourseResource::make($course), 'Course updated successfully');
+        return $this->ApiResponse(CourseResource::make($course), 'Course updated successfully');
     }
 
     /**
@@ -59,6 +59,6 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $course->delete();
-        return $this->ApiResponce(null, 'Course deleted successfully');
+        return $this->ApiResponse(null, 'Course deleted successfully');
     }
 }

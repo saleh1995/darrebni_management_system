@@ -4,7 +4,7 @@ namespace App\Http\Traits;
 
 trait ApiResponseTrait
 {
-    public function ApiResponce($data, $message, $status = 200, $success = true)
+    public function ApiResponse($data, $message, $status = 200, $success = true)
     {
         $responseData = [
             'data' => $data,

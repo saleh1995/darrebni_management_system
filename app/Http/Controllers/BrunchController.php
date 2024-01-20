@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Traits\ApiResponseTrait;
 use App\Models\Brunch;
 use Illuminate\Http\Request;
+use App\Http\Traits\ApiResponseTrait;
 use App\Http\Resources\BrunchResource;
 
 class BrunchController extends Controller
@@ -15,7 +15,7 @@ class BrunchController extends Controller
     public function index()
     {
         $brunches=Brunch::all();
-
+        // return $brunches;
         return $this->apiResponse(BrunchResource::collection($brunches)->resource, 'All Brunches',200);
     }
 
@@ -33,13 +33,13 @@ class BrunchController extends Controller
         ]);
 
 
-        return $this->apiResponse(Brunch::make($brunch), 'Brunch added successfully!', 200);
+        return $this->apiResponse(BrunchResource::make($brunch)->resource, 'Brunch added successfully!', 200);
 
     }
     public function show(string $id)
     {
         $brunch=Brunch::find($id);
-        return $this->apiResponse(Brunch::make($brunch), 'Brunch has been selected successfully!', 200);
+        return $this->apiResponse(BrunchResource::make($brunch)->resource, 'Brunch has been selected successfully!', 200);
 
 
     }
@@ -49,7 +49,7 @@ class BrunchController extends Controller
         $brunch->prefix = $request->input('prefix');
     $brunch->name = $request->input('name');
     $brunch->save();
-    return $this->apiResponse(Brunch::make($brunch), 'Brunch Updated successfully!', 200);
+    return $this->apiResponse(BrunchResource::make($brunch)->resource, 'Brunch Updated successfully!', 200);
 
     }
 
@@ -57,7 +57,7 @@ class BrunchController extends Controller
     {
         $brunch=Brunch::find($id);
         $brunch->delete();
-        return $this->apiResponse(Brunch::make($brunch), 'Brunch Deleted successfully!', 200);
+        return $this->apiResponse(BrunchResource::make($brunch)->resource, 'Brunch Deleted successfully!', 200);
 
     }
 }

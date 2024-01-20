@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Http\Traits;
 
 
@@ -19,3 +19,4 @@ trait ApiResponseTrait
         return response()->json($responseData, $status);
     }
 }
+*/

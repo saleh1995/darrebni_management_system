@@ -26,8 +26,8 @@ Route::prefix('brunch')->group(function () {
     Route::post('/store', [BrunchController::class, 'store']);
     Route::get('/index', [BrunchController::class, 'index']);
     Route::get('/show/{id}', [BrunchController::class, 'show']);
-    Route::post('/delete/{id}', [BrunchController::class, 'delete']);
-    Route::post('/update/{id}', [BrunchController::class, 'update']);
+    Route::delete('/delete/{id}', [BrunchController::class, 'delete']);
+    Route::put('/update/{id}', [BrunchController::class, 'update']);
 });
 
 // Auth Route
