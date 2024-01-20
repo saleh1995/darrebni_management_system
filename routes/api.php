@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\BrunchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BrunchController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TraineeController;
+use App\Http\Controllers\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,6 +29,14 @@ Route::prefix('brunch')->group(function () {
     Route::get('/show/{id}', [BrunchController::class, 'show']);
     Route::delete('/delete/{id}', [BrunchController::class, 'delete']);
     Route::put('/update/{id}', [BrunchController::class, 'update']);
+});
+
+Route::prefix('employee')->group(function () {
+    Route::post('/store', [EmployeeController::class, 'store']);
+    Route::get('/index', [EmployeeController::class, 'index']);
+    Route::get('/show/{id}', [EmployeeController::class, 'show']);
+    Route::delete('/delete/{id}', [EmployeeController::class, 'delete']);
+    Route::put('/update/{id}', [EmployeeController::class, 'update']);
 });
 
 // Auth Route
