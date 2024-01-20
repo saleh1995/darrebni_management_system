@@ -1,10 +1,12 @@
 <?php
-
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\SpecializetionController;
+use App\Http\Controllers\BrunchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\TraineeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,6 +22,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::prefix('brunch')->group(function () {
+    Route::post('/store', [BrunchController::class, 'store']);
+    Route::get('/index', [BrunchController::class, 'index']);
+    Route::get('/show/{id}', [BrunchController::class, 'show']);
+    Route::delete('/delete/{id}', [BrunchController::class, 'delete']);
+    Route::put('/update/{id}', [BrunchController::class, 'update']);
+});
+
+// Auth Route
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::middleware('auth:sanctum')->post('logout', [Authcontroller::class, 'logout']);
+
+Route::resource('/course', CourseController::class);
+Route::resource('/trainee', TraineeController::class);
 
 
 Route::prefix('specializetion')->group(function(){
