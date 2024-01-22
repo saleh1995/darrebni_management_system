@@ -17,7 +17,7 @@ class TraineeController extends Controller
     public function index()
     {
         $data = Trainee::all();
-        return $this->ApiResponce(TraineeResource::collection($data), 'All Trainee');
+        return $this->ApiResponse(TraineeResource::collection($data), 'All Trainee');
     }
 
 
@@ -37,7 +37,7 @@ class TraineeController extends Controller
             'phone_number' => $request->phone_number,
             'date' => $request->date,
         ]);
-        return $this->ApiResponce(TraineeResource::make($data), 'Trainee Stored Successfully');
+        return $this->ApiResponse(TraineeResource::make($data), 'Trainee Stored Successfully');
     }
 
     /**
@@ -46,7 +46,7 @@ class TraineeController extends Controller
     public function show(Trainee $trainee)
     {
         $data = trainee::findOrFail($trainee->id);
-        return $this->ApiResponce(TraineeResource::make($data), 'Trainee Showed Successfully');
+        return $this->ApiResponse(TraineeResource::make($data), 'Trainee Showed Successfully');
     }
 
     /**
@@ -65,7 +65,7 @@ class TraineeController extends Controller
             'phone_number' => $request->phone_number,
             'date' => $request->date,
         ]);
-        return $this->ApiResponce(TraineeResource::make($trainee), 'Trainee updated successfully');
+        return $this->ApiResponse(TraineeResource::make($trainee), 'Trainee updated successfully');
     }
 
     /**
@@ -74,6 +74,6 @@ class TraineeController extends Controller
     public function destroy(Trainee $trainee)
     {
         $trainee->delete();
-        return $this->ApiResponce(null, 'Trainee deleted successfully');
+        return $this->ApiResponse(null, 'Trainee deleted successfully');
     }
 }

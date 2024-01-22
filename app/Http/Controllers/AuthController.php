@@ -19,9 +19,9 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
         if ($user && Hash::check($request->password, $user->password)) {
             $user->tokens()->delete();
-            return $this->ApiResponce(UserResource::make($user), 'login successfully');
+            return $this->ApiResponse(UserResource::make($user), 'login successfully');
         }
-        return $this->ApiResponce(null, 'login failed', 401);
+        return $this->ApiResponse(null, 'login failed', 401);
     }
 
     public function register(RegisterUserRequest $request)
@@ -32,13 +32,13 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'role' => $request->role,
         ]);
-        return $this->ApiResponce(UserResource::make($user), 'user created successfully');
+        return $this->ApiResponse(UserResource::make($user), 'user created successfully');
     }
 
     public function logout()
     {
         $user = Auth::user();
-        $user->currentAccessToken()->delete();
-        return $this->ApiResponce(null, 'token deleted successfully');
+        $user->$this->currentAccessToken()->delete();
+        return $this->ApiResponse(null, 'token deleted successfully');
     }
 }
