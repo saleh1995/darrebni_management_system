@@ -9,7 +9,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TraineeController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\TrainingBatchController;
-
+use App\Http\Controllers\AmountController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -69,3 +69,12 @@ Route::prefix('coach')->group(function(){
     Route::post('imageApi', [CoachController::class, 'imageApi']);
 });
 Route::resource('/TrainingBatch', TrainingBatchController::class);
+
+////amount routes
+Route::prefix('amount')->group(function(){
+    Route::get('index', [AmountController::class, 'index']);
+    Route::get('show/{id}', [AmountController::class, 'show']);
+    Route::post('store', [AmountController::class, 'store']);
+    Route::put('update/{id}', [AmountController::class, 'update']);
+    Route::delete('delete/{id}', [AmountController::class, 'delete']);
+});

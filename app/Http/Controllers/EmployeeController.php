@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Traits\ApiResponseTrait;
+use App\Http\Requests\EmployeeRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\EmployeeResource;
 
 // class EmployeeController extends Controller
@@ -77,18 +79,9 @@ class EmployeeController extends Controller
         return $this->apiResponse(EmployeeResource::collection($employees)->resource, 'All employees',200);
     }
 
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
-        // $request->validate([
-        //     'prefix' => 'required|string|max:25',
-        //     'name' => 'required|string|max:255',
-
-        // ]);
-
         $employee = Employee::create([
-            'prefix' => $request->prefix,
-            'name' => $request->name,
-            'id'=>$request->id,
             'darrebni_id' => $request->darrebni_id,
             'first_name' => $request->first_name,
             'middle_name' => $request->middle_name,
@@ -115,15 +108,6 @@ class EmployeeController extends Controller
 
 
     }
-    // public function update(Request $request, string $id)
-    // {
-    //     $brunch=Employee::FindOrFail($id);
-    // //     $brunch->prefix = $request->input('prefix');
-    // // $brunch->name = $request->input('name');
-    // $brunch->save();
-    // return $this->apiResponse(EmployeeResource::make($brunch)->resource, 'Employee Updated successfully!', 200);
-
-    // }
 
     public function delete(string $id)
     {
@@ -132,4 +116,37 @@ class EmployeeController extends Controller
         return $this->apiResponse(EmployeeResource::make($brunch)->resource, 'Employee Deleted successfully!', 200);
 
     }
+
+
+
+
+    public function update(EmployeeRequest $request, $id)
+    {
+        $employee = Employee::findOrFail($id);
+        if($request->has('image') && $request->image!=$employee->image)
+        {
+            Storage::disk('public')->delete($employee->image);
+            $request->file('image')->store('images', 'public');
+        }
+        $employee->update([
+            'darrebni_id' => $request->darrebni_id,
+            'first_name' => $request->first_name,
+            'middle_name' => $request->middle_name,
+            'last_name' => $request->last_name,
+            'birth_date' => $request->birth_date,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'image' => $request->image,
+            'salary' => $request->salary,
+            'speciality' => $request->speciality,
+            'brunch_id' => $request->brunch_id,
+            'note' => $request->note,
+            ]);
+
+            $coach = EmployeeResource::make($employee);
+            return $this->apiResponse($coach, 'Updated employee');
+    }
+
+
 }
