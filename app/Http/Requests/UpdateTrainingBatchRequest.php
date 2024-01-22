@@ -23,8 +23,8 @@ class UpdateTrainingBatchRequest extends FormRequest
     {
         return [
             'name' => ['required','string'],
-            'TrainingBatchID' => ['required','string','unique'],
-            'price'=> ['required','double'],
+            'TrainingBatchID' => ['required','string','unique:App\Models\TrainingBatch,TrainingBatchID,'],
+            'price'=> ['required'],
             'currency' => ['required','string'],
         ];
     }

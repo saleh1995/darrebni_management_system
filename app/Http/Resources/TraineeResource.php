@@ -15,6 +15,7 @@ class TraineeResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'first_name_ar' => $this->first_name_ar,
             'middle_name_ar'=> $this->middle_name_ar,
             'last_name_ar' => $this->last_name_ar,
