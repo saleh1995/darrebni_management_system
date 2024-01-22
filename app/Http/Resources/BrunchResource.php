@@ -14,8 +14,9 @@ class BrunchResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-           return [
+        return [
             'name' => $this->name,
-            'prefix' => $this->prifix,];
+            'prefix' => $this->prifix,
+        ];
     }
 }

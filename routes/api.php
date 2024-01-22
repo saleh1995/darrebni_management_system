@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+// Bbrunch
 Route::prefix('brunch')->group(function () {
     Route::post('/store', [BrunchController::class, 'store']);
     Route::get('/index', [BrunchController::class, 'index']);
