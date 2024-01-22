@@ -76,4 +76,24 @@ class TraineeController extends Controller
         $trainee->delete();
         return $this->ApiResponse(null, 'Trainee deleted successfully');
     }
+
+    // public function update(UpdateTraineeRequest $request, trainee $trainee)
+    // {
+    //     $trainee->update([
+    //         'first_name_ar' => $request->first_name_ar,
+    //         'middle_name_ar' => $request->middle_name_ar,
+    //         'last_name_ar' => $request->last_name_ar,
+    //         'first_name_en' => $request->first_name_en,
+    //         'middle_name_en' => $request->middle_name_en,
+    //         'last_name_en' => $request->last_name_en,
+    //         'email' => $request->email,
+    //         'phone_number' => $request->phone_number,
+    //         'date' => $request->date,
+    //     ]);
+    //     return $this->ApiResponse(TraineeResource::make($trainee), 'Trainee updated successfully');
+    // }
+
+
+
+
 }

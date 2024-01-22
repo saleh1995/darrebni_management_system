@@ -123,11 +123,6 @@ class EmployeeController extends Controller
     public function update(EmployeeRequest $request, $id)
     {
         $employee = Employee::findOrFail($id);
-        if($request->has('image') && $request->image!=$employee->image)
-        {
-            Storage::disk('public')->delete($employee->image);
-            $request->file('image')->store('images', 'public');
-        }
         $employee->update([
             'darrebni_id' => $request->darrebni_id,
             'first_name' => $request->first_name,
@@ -137,7 +132,7 @@ class EmployeeController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
-            'image' => $request->image,
+            'image' => $request->image ?? $employee ->image,
             'salary' => $request->salary,
             'speciality' => $request->speciality,
             'brunch_id' => $request->brunch_id,
