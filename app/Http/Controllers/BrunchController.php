@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brunch;
 use Illuminate\Http\Request;
+use App\Http\Requests\BrunchRequest;
 use App\Http\Traits\ApiResponseTrait;
 use App\Http\Resources\BrunchResource;
 
@@ -19,13 +20,13 @@ class BrunchController extends Controller
         return $this->apiResponse(BrunchResource::collection($brunches)->resource, 'All Brunches',200);
     }
 
-    public function store(Request $request)
+    public function store(BrunchRequest $request)
     {
-        $request->validate([
-            'prefix' => 'required|string|max:25',
-            'name' => 'required|string|max:255',
+        // $request->validate([
+        //     'prefix' => 'required|string|max:25',
+        //     'name' => 'required|string|max:255',
 
-        ]);
+        // ]);
 
         $brunch = Brunch::create([
             'prefix' => $request->prefix,
@@ -43,7 +44,7 @@ class BrunchController extends Controller
 
 
     }
-    public function update(Request $request, string $id)
+    public function update(BrunchRequest $request, string $id)
     {
         $brunch=Brunch::FindOrFail($id);
         $brunch->prefix = $request->input('prefix');
