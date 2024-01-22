@@ -69,8 +69,8 @@ Route::prefix('coach')->middleware('auth:sanctum')->group(function(){
     Route::post('imageApi', [CoachController::class, 'imageApi']);
 });
 
-
-Route::prefix('amount')->group(function(){
+////amount routes
+Route::prefix('amount')->middleware('auth:sanctum')->group(function(){
     Route::get('index', [AmountController::class, 'index']);
     Route::get('show/{id}', [AmountController::class, 'show']);
     Route::post('store', [AmountController::class, 'store']);
