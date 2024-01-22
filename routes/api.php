@@ -23,9 +23,14 @@ use App\Http\Controllers\ImageController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Auth Route
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::middleware('auth:sanctum')->post('logout', [Authcontroller::class, 'logout']);
+
+
+//Global Group
+Route::middleware('auth:sanctum')->group(function(){
 
 // Brunch
 Route::prefix('brunch')->group(function () {
@@ -36,6 +41,7 @@ Route::prefix('brunch')->group(function () {
     Route::put('/update/{id}', [BrunchController::class, 'update']);
 });
 
+// employee
 Route::prefix('employee')->group(function () {
     Route::post('/store', [EmployeeController::class, 'store']);
     Route::get('/index', [EmployeeController::class, 'index']);
@@ -43,23 +49,16 @@ Route::prefix('employee')->group(function () {
     Route::delete('/delete/{id}', [EmployeeController::class, 'delete']);
     Route::put('/update/{id}', [EmployeeController::class, 'update']);
 });
-// Auth Route
-Route::post('login', [AuthController::class, 'login']);
-Route::post('register', [AuthController::class, 'register']);
-Route::middleware('auth:sanctum')->post('logout', [Authcontroller::class, 'logout']);
-
-Route::resource('/course', CourseController::class);
-Route::resource('/trainee', TraineeController::class);
 
 // specializetion Route
 Route::prefix('specializetion')->group(function(){
-
     Route::get('index', [SpecializetionController::class, 'index']);
     Route::get('show/{id}', [SpecializetionController::class, 'show']);
     Route::post('store', [SpecializetionController::class, 'store']);
     Route::put('update/{id}', [SpecializetionController::class, 'update']);
     Route::delete('delete/{id}', [SpecializetionController::class, 'delete']);
 });
+
 // coach Route
 Route::prefix('coach')->group(function(){
     Route::get('index', [CoachController::class, 'index']);
@@ -69,7 +68,7 @@ Route::prefix('coach')->group(function(){
     Route::delete('delete/{id}', [CoachController::class, 'delete']);
     Route::post('imageApi', [CoachController::class, 'imageApi']);
 });
-Route::resource('/TrainingBatch', TrainingBatchController::class);
+
 
 ////amount routes
 Route::prefix('amount')->group(function(){
@@ -82,4 +81,11 @@ Route::prefix('amount')->group(function(){
 
 ////Image routes
 Route::post('imageApi', [ImageController::class, 'imageApi']);
+
+////
+Route::resource('/TrainingBatch', TrainingBatchController::class);
+Route::resource('/course', CourseController::class);
+Route::resource('/trainee', TraineeController::class);
+
+});
 
