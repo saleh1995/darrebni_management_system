@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AmountController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\SpecializetionController;
 use App\Http\Controllers\BrunchController;
@@ -56,4 +58,13 @@ Route::prefix('coach')->group(function(){
     Route::put('update/{id}', [CoachController::class, 'update']);
     Route::delete('delete/{id}', [CoachController::class, 'delete']);
     Route::post('imageApi', [CoachController::class, 'imageApi']);
+});
+
+
+Route::prefix('amount')->group(function(){
+    Route::get('index', [AmountController::class, 'index']);
+    Route::get('show/{id}', [AmountController::class, 'show']);
+    Route::post('store', [AmountController::class, 'store']);
+    Route::put('update/{id}', [AmountController::class, 'update']);
+    Route::delete('delete/{id}', [AmountController::class, 'delete']);
 });
