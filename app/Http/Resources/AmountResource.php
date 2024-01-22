@@ -15,6 +15,7 @@ class AmountResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id'=>$this->id,
             'trainee_id'=>$this->trainee_id,
             'amount'=>$this->amount,
         ];
