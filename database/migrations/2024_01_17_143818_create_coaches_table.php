@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('notes')->nullable();
             $table->double('salary_sp',15)->nullable();
             $table->double('salary_us',15)->nullable();
-            $table->foreignId('specializetion_id')->constrained('specializetions')->cascadeOnDelete();
+            $table->foreignId('specializetion_id')->nullable()->constrained('specializetions')->nullOnDelete();
             $table->string('CoachID')->nullable();
             $table->timestamps();
         });
