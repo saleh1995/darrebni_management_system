@@ -24,6 +24,7 @@ class AmountRequest extends FormRequest
         return [
             'trainee_id'=>['required','exists:trainees,id'],
             'amount'=>['required','numeric'],
+            'training_batche_id'=>['required','exists:training_batches,id']
         ];
     }
 }

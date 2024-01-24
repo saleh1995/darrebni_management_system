@@ -45,7 +45,7 @@ class CoachController extends Controller
         'notes'=> $request->notes,
         'salary_sp'=>$request->salary_sp,
         'salary_us'=>$request->salary_us,
-        'ID'=>$request->ID,
+        'CoachID'=>$request->CoachID,
        'specializetion_id'=> $request->specializetion_id,
         ]);
 
@@ -76,20 +76,21 @@ class CoachController extends Controller
             Storage::disk('public')->delete($item->image);
             $request->file('image')->store('images', 'public');
         }
+
         $item->update([
-            'first_name'=> $request->first_name,
-            'middle_name'=> $request->middle_name,
-            'last_name'=> $request->last_name,
-            'phone'=> $request->phone,
-            'address'=> $request->address,
-            'email'=> $request->email,
-            'birth_date'=> $request->birth_date,
-            'image'=> $request->image,
-            'notes'=> $request->notes,
-            'salary_sp'=>$request->salary_sp,
-            'salary_us'=>$request->salary_us,
-            'ID'=>$request->ID,
-           'specializetion_id'=> $request->specializetion_id,
+            'first_name'=> $request->first_name ? $request->first_name : $item->first_name,
+            'middle_name'=> $request->middle_name ? $request->middle_name : $item->middle_name,
+            'last_name'=> $request->last_name ? $request->last_name : $item->last_name,
+            'phone'=> $request->phone? $request->phone : $item->phone,
+            'address'=> $request->address? $request->address : $item->address,
+            'email'=> $request->email? $request->email : $item->email,
+            'birth_date'=> $request->birth_date? $request->birth_date : $item->birth_date,
+            'image'=> $request->image? $request->image : $item->image,
+            'notes'=> $request->notes? $request->notes : $item->notes,
+            'salary_sp'=>$request->salary_sp? $request->salary_sp : $item->salary_sp,
+            'salary_us'=>$request->salary_us? $request->salary_us : $item->salary_us,
+            'CoachID'=>$request->CoachID? $request->CoachID : $item->CoachID,
+           'specializetion_id'=> $request->specializetion_id? $request->specializetion_id : $item->specializetion_id,
             ]);
 
             $coach = CoachReaource::make($item);

@@ -24,7 +24,7 @@ class Coach extends Model
         'salary_sp',
         'salary_us',
         'specializetion_id',
-        'ID',
+        'CoachID',
     ];
 
     public function specializetion()
