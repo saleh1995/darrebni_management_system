@@ -42,6 +42,6 @@ class TrainingBatch extends Model
 
     public function amount()
     {
-        return $this->hasMany(Amount::class);
+        return $this->hasMany(Amount::class,'training_batche_id');
     }
 }
