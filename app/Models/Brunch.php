@@ -23,4 +23,9 @@ class Brunch extends Model
     {
         return $this->hasMany(TrainingBatch::class);
     }
+
+    public function employee(): HasMany
+    {
+        return $this->hasMany(Employee::class);
+    }
 }

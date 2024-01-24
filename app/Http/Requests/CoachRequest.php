@@ -22,19 +22,19 @@ class CoachRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name'=>['required','string','max:255'],
-            'middle_name'=>['required','string','max:255'],
-            'last_name'=>['required','string','max:255'],
-            'phone'=>['required','numeric'],
-            'address'=>['required','string','max:255'],
-            'email'=>['required','email','unique:coaches'],
-            'birth_date'=>['required','date'],
-            'image'=>['required','string','max:255'],
-            'notes'=>['required','string','max:255'],
-            'salary_sp'=>['required','numeric'],
-            'salary_us'=>['required','numeric'],
-            'ID'=>['required', 'alpha_num'],
-           'specializetion_id'=>['required','exists:specializetions,id'],
+            'first_name'=>['string','max:255'],
+            'middle_name'=>['string','max:255'],
+            'last_name'=>['string','max:255'],
+            'phone'=>['numeric'],
+            'address'=>['string','max:255'],
+            'email'=>['email','unique:coaches'],
+            'birth_date'=>['date'],
+            'image'=>['string','max:255'],
+            'notes'=>['string','max:255'],
+            'salary_sp'=>['numeric'],
+            'salary_us'=>['numeric'],
+            'CoachID'=>['string'],
+           'specializetion_id'=>['exists:specializetions,id'],
         ];
     }
 }

@@ -27,7 +27,7 @@ class CoachReaource extends JsonResource
         'notes'=>$this->notes,
         'salary_sp'=>$this->salary_sp,
         'salary_us'=>$this->salary_us,
-        'ID'=>$this->ID,
+        'CoachID'=>$this->CoachID,
        'specializetion_id'=>$this->specializetion_id,
     ];
     }

@@ -42,7 +42,7 @@ class AmountController extends Controller
         ]);
 
         $amout=AmountResource::make($item);
-        return $this->ApiResponse($amout,'created successfully');
+        return $this->ApiResponse($amout,'updated successfully');
     }
 
     public function delete($id){
