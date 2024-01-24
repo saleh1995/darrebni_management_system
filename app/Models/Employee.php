@@ -30,14 +30,14 @@ class Employee extends Model
     //     return $this->belongsTo(Brunch::class);
     // }
 
-        public function specializetion()
+    public function specialization()
     {
-        return $this->belongsTo(Specializetion::class);
+        return $this->belongsTo(Specializetion::class,"specializetion_id");
     }
 
     public function brunch()
     {
-        return $this->belongsTo(Brunch::class);
+        return $this->belongsTo(Brunch::class,"brunch_id");
     }
 
 }
