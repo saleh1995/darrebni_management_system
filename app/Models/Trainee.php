@@ -25,4 +25,10 @@ class Trainee extends Model
     {
         return $this->hasMany(Amount::class,'trainee_id');
     }
+    public function specializetion()
+    {
+        return $this->belongsTo(Specializetion::class);
+    }
+
+
 }
