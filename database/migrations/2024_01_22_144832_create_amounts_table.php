@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('amounts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('trainee_id')->constrained('trainees')->cascadeOnDelete();
+            $table->foreignId('training_batche_id')->constrained('training_batches')->cascadeOnDelete();
             $table->decimal('amount',15,3)->nullable();
             $table->timestamps();
         });
