@@ -10,6 +10,8 @@ use App\Http\Controllers\TraineeController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\TrainingBatchController;
 use App\Http\Controllers\AmountController;
+use App\Http\Controllers\ImageController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,11 +23,16 @@ use App\Http\Controllers\AmountController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Auth Route
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::middleware('auth:sanctum')->post('logout', [Authcontroller::class, 'logout']);
 
-// Bbrunch
+
+//Global Group
+Route::middleware('auth:sanctum')->group(function(){
+
+// Brunch
 Route::prefix('brunch')->group(function () {
     Route::post('/store', [BrunchController::class, 'store']);
     Route::get('/index', [BrunchController::class, 'index']);
@@ -34,6 +41,7 @@ Route::prefix('brunch')->group(function () {
     Route::put('/update/{id}', [BrunchController::class, 'update']);
 });
 
+// employee
 Route::prefix('employee')->group(function () {
     Route::post('/store', [EmployeeController::class, 'store']);
     Route::get('/index', [EmployeeController::class, 'index']);
@@ -42,17 +50,8 @@ Route::prefix('employee')->group(function () {
     Route::put('/update/{id}', [EmployeeController::class, 'update']);
 });
 
-// Auth Route
-Route::post('login', [AuthController::class, 'login']);
-Route::post('register', [AuthController::class, 'register']);
-Route::middleware('auth:sanctum')->post('logout', [Authcontroller::class, 'logout']);
-
-Route::resource('/course', CourseController::class);
-Route::resource('/trainee', TraineeController::class);
-
-
+// specializetion Route
 Route::prefix('specializetion')->group(function(){
-
     Route::get('index', [SpecializetionController::class, 'index']);
     Route::get('show/{id}', [SpecializetionController::class, 'show']);
     Route::post('store', [SpecializetionController::class, 'store']);
@@ -60,6 +59,7 @@ Route::prefix('specializetion')->group(function(){
     Route::delete('delete/{id}', [SpecializetionController::class, 'delete']);
 });
 
+// coach Route
 Route::prefix('coach')->group(function(){
     Route::get('index', [CoachController::class, 'index']);
     Route::get('show/{id}', [CoachController::class, 'show']);
@@ -68,7 +68,7 @@ Route::prefix('coach')->group(function(){
     Route::delete('delete/{id}', [CoachController::class, 'delete']);
     Route::post('imageApi', [CoachController::class, 'imageApi']);
 });
-Route::resource('/TrainingBatch', TrainingBatchController::class);
+
 
 ////amount routes
 Route::prefix('amount')->group(function(){
@@ -78,3 +78,14 @@ Route::prefix('amount')->group(function(){
     Route::put('update/{id}', [AmountController::class, 'update']);
     Route::delete('delete/{id}', [AmountController::class, 'delete']);
 });
+
+////Image routes
+Route::post('imageApi', [ImageController::class, 'imageApi']);
+
+////
+Route::resource('/TrainingBatch', TrainingBatchController::class);
+Route::resource('/course', CourseController::class);
+Route::resource('/trainee', TraineeController::class);
+
+});
+

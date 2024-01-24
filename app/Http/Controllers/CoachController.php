@@ -17,15 +17,7 @@ class CoachController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function imageApi(Request $request)
-    {
-        $request->validate([
-            'image' => ['required', 'image'],
-        ]);
 
-        $image = $request->file('image')->store('images','public');
-        return $this->apiResponse($image, 'this path image');
-    }
 
     public function index()
     {

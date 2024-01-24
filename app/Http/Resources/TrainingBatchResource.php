@@ -15,6 +15,7 @@ class TrainingBatchResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'TrainingBatchID' => $this->TrainingBatchID,
             'price' => $this->price,

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\TrainingBatch;
+use App\Http\Resources\TrainingBatchResource;
 use App\Http\Requests\StoreTrainingBatchRequest;
 use App\Http\Requests\UpdateTrainingBatchRequest;
-use App\Http\Resources\TrainingBatchResource;
 
 class TrainingBatchController extends Controller
 {
@@ -26,8 +26,8 @@ class TrainingBatchController extends Controller
         $data = TrainingBatch::create([
             'name' => $request->name,
             'TrainingBatchID' => $request->TrainingBatchID,
-            'price'=>$request->price,
-            'currency' =>$request->currency,
+            'price' => $request->price,
+            'currency' => $request->currency,
         ]);
         return $this->ApiResponse(TrainingBatchResource::make($data), 'Training Batch Stored Successfully');
     }
@@ -35,34 +35,32 @@ class TrainingBatchController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TrainingBatch $trainingBatch)
+    public function show(TrainingBatch $TrainingBatch)
     {
-        $data =TrainingBatch::findOrFail($trainingBatch->id);
-        return $this->ApiResponse(TrainingBatchResource::make($data), 'training batch Showed Successfully');
-
+        // $data = TrainingBatch::findOrFail($trainingBatch->id);
+        return $this->ApiResponse(TrainingBatchResource::make($TrainingBatch), 'training batch Showed Successfully');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTrainingBatchRequest $request, TrainingBatch $trainingBatch)
+    public function update(UpdateTrainingBatchRequest $request, TrainingBatch $TrainingBatch)
     {
-
-        $trainingBatch->update([
+        $TrainingBatch->update([
             'name' => $request->name,
             'TrainingBatchID' => $request->TrainingBatchID,
-            'price'=>$request->price,
-            'currency' =>$request->currency,
+            'price' => $request->price,
+            'currency' => $request->currency,
         ]);
-        return $this->ApiResponse(TrainingBatchResource::make($trainingBatch), 'training Batch updated successfully');
+        return $this->ApiResponse(TrainingBatchResource::make($TrainingBatch), 'training Batch updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TrainingBatch $trainingBatch)
+    public function destroy(TrainingBatch $TrainingBatch)
     {
-        $trainingBatch->delete();
+        $TrainingBatch->delete();
         return $this->ApiResponse(null, 'training Batch deleted successfully');
     }
 }
