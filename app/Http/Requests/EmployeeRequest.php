@@ -33,8 +33,9 @@ class EmployeeRequest extends FormRequest
             'image'=>['required','string','max:255'],
             'note'=>['required','string','max:255'],
             'salary'=>['required','numeric'],
-            'speciality'=>['required', 'alpha_num'],
-           'brunch_id'=>['required','exists:specializetions,id'],
+            'brunch_id'=>['required','exists:brunches,id'],
+            'specializetion_id'=>['required','exists:specializetions,id'],
+
         ];
     }
 }
