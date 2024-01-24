@@ -17,6 +17,7 @@ class TrainingBatch extends Model
         'TrainingBatchID',
         'price',
         'currency',
+        'days',
     ];
 
 
