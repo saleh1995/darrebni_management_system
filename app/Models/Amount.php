@@ -14,4 +14,6 @@ class Amount extends Model
         'amount',
         'training_batche_id'
     ];
+
+
 }

@@ -19,4 +19,11 @@ class Trainee extends Model
         'phone_number',
         'date',
     ];
+
+    public function specializetion()
+    {
+        return $this->belongsTo(Specializetion::class);
+    }
+
+
 }
