@@ -19,7 +19,6 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'role' => ($this->role == 1 ? 'admin' : 'dataentry'),
-            'token' => $this->createToken($request->userAgent())->plainTextToken,
         ];
     }
 }
