@@ -16,4 +16,14 @@ class Specializetion extends Model
     {
         return $this->hasMany(Coach::class, 'specializetion_id');
     }
+
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
+
+    public function trainees()
+    {
+        return $this->hasMany(Trainee::class);
+    }
 }

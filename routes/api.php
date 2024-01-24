@@ -75,7 +75,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     ////amount routes
-    Route::prefix('amount')->group(function(){
+    Route::prefix('payment')->group(function(){
         Route::get('index', [AmountController::class, 'index']);
         Route::get('show/{id}', [AmountController::class, 'show']);
         Route::put('store', [AmountController::class, 'store']);
