@@ -22,7 +22,22 @@ class Employee extends Model
         'speciality',
         'brunch_id',
         'note',
-      
+
     ];
+
+    // public function employees()
+    // {
+    //     return $this->belongsTo(Brunch::class);
+    // }
+
+        public function specializetion()
+    {
+        return $this->belongsTo(Specializetion::class);
+    }
+
+    public function brunch()
+    {
+        return $this->belongsTo(Brunch::class);
+    }
 
 }

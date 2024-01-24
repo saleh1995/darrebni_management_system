@@ -17,6 +17,7 @@ class AmountResource extends JsonResource
         return [
             'id'=>$this->id,
             'trainee_id'=>$this->trainee_id,
+            'training_batche_id'=>$this->training_batche_id,
             'amount'=>$this->amount,
         ];
     }

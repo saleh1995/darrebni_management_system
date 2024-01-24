@@ -26,6 +26,7 @@ class StoreTrainingBatchRequest extends FormRequest
             'TrainingBatchID' => ['required','string','unique:App\Models\TrainingBatch,TrainingBatchID,'],
             'price'=> ['required'],
             'currency' => ['required','string'],
+            'days' => ['required','string'],
         ];
     }
 }

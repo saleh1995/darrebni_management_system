@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('amounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('trainee_id')->constrained('trainees')->cascadeOnDelete();
+            $table->foreignId('trainee_id')->nullable()->constrained('trainees')->nullOnDelete();
+            $table->foreignId('training_batche_id')->nullable()->constrained('training_batches')->nullOnDelete();
             $table->decimal('amount',15,3)->nullable();
             $table->timestamps();
         });

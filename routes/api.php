@@ -75,10 +75,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     ////amount routes
-    Route::prefix('amount')->group(function () {
+    Route::prefix('amount')->group(function(){
         Route::get('index', [AmountController::class, 'index']);
         Route::get('show/{id}', [AmountController::class, 'show']);
-        Route::post('store', [AmountController::class, 'store']);
+        Route::put('store', [AmountController::class, 'store']);
         Route::put('update/{id}', [AmountController::class, 'update']);
         Route::delete('delete/{id}', [AmountController::class, 'delete']);
     });

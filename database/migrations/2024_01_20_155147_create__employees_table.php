@@ -24,7 +24,8 @@ return new class extends Migration
             $table->string("image")->nullable;
             $table->string("salary")->nullable;
             $table->string("speciality")->nullable;
-            $table->string("brunch_id")->nullable;
+            $table->foreignId("brunch_id")->nullable()->constrained('brunches', 'id')->nullOnDelete();
+            $table->foreignId("specializetion_id")->nullable()->constrained('specializetions', 'id')->nullOnDelete();
             $table->string("note")->nullable;
             $table->timestamps();
         });

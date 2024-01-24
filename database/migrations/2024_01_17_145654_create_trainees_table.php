@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('last_name_en')->nullable();
             $table->string('email')->nullable()->unique();
             $table->string('phone_number')->nullable();
+            $table->foreignId("specializetion_id")->nullable()->constrained('specializetions', 'id')->nullOnDelete();
             $table->date('date')->nullable();
             $table->timestamps();
         });

@@ -23,6 +23,8 @@ class TrainingBatchResource extends JsonResource
             'brunch' => $this->brunch,
             'coach' => $this->coach,
             'course' => $this->course,
+            'days' =>json_decode($this->course),
+
         ];
     }
 }

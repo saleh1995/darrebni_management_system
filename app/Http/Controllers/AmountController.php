@@ -26,6 +26,7 @@ class AmountController extends Controller
 
         $item=Amount::create([
             'trainee_id'=>$request->trainee_id,
+            'training_batche_id'=>$request->training_batche_id,
             'amount'=>$request->amount,
         ]);
 
@@ -38,11 +39,12 @@ class AmountController extends Controller
         $item=Amount::findorfail($id);
         $item->update([
             'trainee_id'=>$request->trainee_id,
+            'training_batche_id'=>$request->training_batche_id,
             'amount'=>$request->amount,
         ]);
 
         $amout=AmountResource::make($item);
-        return $this->ApiResponse($amout,'created successfully');
+        return $this->ApiResponse($amout,'updated successfully');
     }
 
     public function delete($id){
