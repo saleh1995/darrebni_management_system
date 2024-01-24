@@ -18,6 +18,7 @@ class TrainingBatch extends Model
         'TrainingBatchID',
         'price',
         'currency',
+        'days',
     ];
 
     public function brunch(): BelongsTo
