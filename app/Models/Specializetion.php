@@ -8,13 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Specializetion extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'name',
     ];
 
     public function coaches()
     {
-        return $this->hasMany(Coach::class);
+        return $this->hasMany(Coach::class, 'specializetion_id');
+    }
+
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
+
+    public function trainees()
+    {
+        return $this->hasMany(Trainee::class);
     }
 }
-

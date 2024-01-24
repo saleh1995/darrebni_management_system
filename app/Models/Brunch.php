@@ -16,16 +16,14 @@ class Brunch extends Model
         'name',
     ];
 
-    /**
-     * Get the comments for the blog post.
-     */
-    public function trainingBatch(): HasMany
+
+    public function trainingBatches(): HasMany
     {
-        return $this->hasMany(TrainingBatch::class);
+        return $this->hasMany(TrainingBatch::class,'brunch_id');
     }
 
     public function employees(): HasMany
     {
-        return $this->hasMany(Employee::class);
+        return $this->hasMany(Employee::class,'brunch_id');
     }
 }

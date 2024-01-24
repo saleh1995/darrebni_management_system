@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Trainee extends Model
 {
@@ -19,4 +20,15 @@ class Trainee extends Model
         'phone_number',
         'date',
     ];
+
+    public function amounts(): HasMany
+    {
+        return $this->hasMany(Amount::class,'trainee_id');
+    }
+    public function specializetion()
+    {
+        return $this->belongsTo(Specializetion::class);
+    }
+
+
 }

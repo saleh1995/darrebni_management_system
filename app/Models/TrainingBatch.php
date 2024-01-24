@@ -6,6 +6,7 @@ use App\Models\Coach;
 use App\Models\Brunch;
 use App\Models\Course;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -20,26 +21,28 @@ class TrainingBatch extends Model
         'days',
     ];
 
-
-    /**
-     * Get the post that owns the comment.
-     */
     public function brunch(): BelongsTo
     {
-        return $this->belongsTo(Brunch::class);
+        return $this->belongsTo(Brunch::class, 'brunch_id');
     }
-    /**
-     * Get the post that owns the comment.
-     */
+
     public function course(): BelongsTo
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(Course::class, 'course_id');
     }
-    /**
-     * Get the post that owns the comment.
-     */
+
     public function coach(): BelongsTo
     {
-        return $this->belongsTo(Coach::class);
+        return $this->belongsTo(Coach::class, 'coach_id');
+    }
+
+    public function amounts(): HasMany
+    {
+        return $this->hasMany(TrainingBatch::class, 'training_batche_id');
+    }
+
+    public function amount()
+    {
+        return $this->hasMany(Amount::class);
     }
 }

@@ -14,11 +14,11 @@ class Course extends Model
         'prefix',
     ];
 
-            /**
+    /**
      * Get the comments for the blog post.
      */
-    public function trainingBatch(): HasMany
+    public function trainingBatches(): HasMany
     {
-        return $this->hasMany(TrainingBatch::class);
+        return $this->hasMany(TrainingBatch::class, 'course_id');
     }
 }
