@@ -17,6 +17,12 @@ class Amount extends Model
 
 
 
+    public function trainee(){
+        return $this->belongsTo(Trainee::class);
+    }
 
+    public function trainingBatch(){
+        return $this->belongsTo(TrainingBatch::class);
+    }
 
 }

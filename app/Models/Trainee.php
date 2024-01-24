@@ -25,5 +25,11 @@ class Trainee extends Model
         return $this->belongsTo(Specializetion::class);
     }
 
+    public function amount()
+    {
+        return $this->hasMany(Amount::class);
+    }
+
+
 
 }

@@ -41,4 +41,9 @@ class TrainingBatch extends Model
     {
         return $this->belongsTo(Coach::class);
     }
+
+    public function amount()
+    {
+        return $this->hasMany(Amount::class);
+    }
 }
