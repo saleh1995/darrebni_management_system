@@ -12,8 +12,11 @@ class Amount extends Model
     protected $fillable=[
         'trainee_id',
         'amount',
-        'training_batche_id'
+        'training_batche_id',
     ];
+
+
+
 
 
 }

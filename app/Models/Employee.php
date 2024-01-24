@@ -25,10 +25,7 @@ class Employee extends Model
 
     ];
 
-    // public function employees()
-    // {
-    //     return $this->belongsTo(Brunch::class);
-    // }
+
 
     public function specialization()
     {
