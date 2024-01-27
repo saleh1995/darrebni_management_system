@@ -19,7 +19,7 @@ class Employee extends Model
         'address',
         'image',
         'salary',
-        'speciality',
+        'specializetion_id',
         'brunch_id',
         'note',
 
