@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             CoachSeeder::class,
             AmountSeeder::class,
+
         ]);
     }
 }
