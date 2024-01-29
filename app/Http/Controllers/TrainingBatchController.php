@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateTrainingBatchRequest;
 
 class TrainingBatchController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
