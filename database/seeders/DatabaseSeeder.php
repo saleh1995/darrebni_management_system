@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Coach;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,9 +14,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        Coach::factory(10)->create();
+
         $this->call([
-            BrunchSeeder::class,
-            EmployeeSeeder::class,
+            CoachSeeder::class,
+            SpecializetionSeeder::class,
+            AmountSeeder::class,
         ]);
     }
 }
+
+

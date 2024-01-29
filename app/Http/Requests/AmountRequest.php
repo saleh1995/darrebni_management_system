@@ -22,9 +22,9 @@ class AmountRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'trainee_id'=>['required','exists:trainees,id'],
+            'trainee_id'=>['sometimes','exists:trainees,id'],
             'amount'=>['required','numeric'],
-            'training_batche_id'=>['required','exists:training_batches,id']
+            'training_batche_id'=>['sometimes','exists:training_batches,id']
         ];
     }
 }

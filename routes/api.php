@@ -25,6 +25,7 @@ use App\Http\Controllers\SpecializetionController;
 |
 */
 
+
 // Auth Route
 Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->post('user/changePassword', [UserController::class, 'updatePassword']);
@@ -34,8 +35,8 @@ Route::middleware('auth:sanctum')->post('logout', [Authcontroller::class, 'logou
 Route::middleware('auth:sanctum')->resource('/user', UserController::class);
 
 
-//Global Group
-// Route::middleware('auth:sanctum')->group(function () {
+// //Global Group
+Route::middleware('auth:sanctum')->group(function () {
 
     // Brunch
     Route::prefix('brunch')->group(function () {
@@ -84,6 +85,15 @@ Route::middleware('auth:sanctum')->resource('/user', UserController::class);
         Route::delete('delete/{id}', [AmountController::class, 'delete']);
     });
 
+    //specializetion
+    Route::prefix('specializetion')->group(function () {
+        Route::get('index', [SpecializetionController::class, 'index']);
+        Route::get('show/{id}', [SpecializetionController::class, 'show']);
+        Route::post('store', [SpecializetionController::class, 'store']);
+        Route::put('update/{id}', [SpecializetionController::class, 'update']);
+        Route::delete('delete/{id}', [SpecializetionController::class, 'delete']);
+    });
+
     ////Image routes
     Route::post('imageApi', [ImageController::class, 'imageApi']);
 
@@ -91,5 +101,4 @@ Route::middleware('auth:sanctum')->resource('/user', UserController::class);
     Route::resource('/TrainingBatch', TrainingBatchController::class);
     Route::resource('/course', CourseController::class);
     Route::resource('/trainee', TraineeController::class);
-// });
-
+});

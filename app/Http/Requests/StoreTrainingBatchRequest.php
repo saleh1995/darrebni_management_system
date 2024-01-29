@@ -22,11 +22,14 @@ class StoreTrainingBatchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required','string'],
-            'TrainingBatchID' => ['required','string','unique:App\Models\TrainingBatch,TrainingBatchID,'],
-            'price'=> ['required'],
-            'currency' => ['required','string'],
-            'days' => ['required','string'],
+            'name' => ['required', 'string'],
+            'TrainingBatchID' => ['required', 'string', 'unique:App\Models\TrainingBatch,TrainingBatchID,'],
+            'price' => ['required'],
+            'currency' => ['required', 'string'],
+            'days' => ['required', 'string'],
+            'coach_id' => ['sometimes', 'nullable'],
+            'course_id' => ['sometimes', 'nullable'],
+            'brunch_id' => ['sometimes', 'nullable'],
         ];
     }
 }

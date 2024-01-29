@@ -19,6 +19,9 @@ class TrainingBatch extends Model
         'price',
         'currency',
         'days',
+        'coach_id',
+        'course_id',
+        'brunch_id',
     ];
 
     public function brunch(): BelongsTo
@@ -40,5 +43,4 @@ class TrainingBatch extends Model
     {
         return $this->hasMany(TrainingBatch::class, 'training_batche_id');
     }
-
 }
