@@ -35,7 +35,7 @@ Route::middleware('auth:sanctum')->resource('/user', UserController::class);
 
 
 //Global Group
-Route::middleware('auth:sanctum')->group(function () {
+// Route::middleware('auth:sanctum')->group(function () {
 
     // Brunch
     Route::prefix('brunch')->group(function () {
@@ -91,4 +91,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/TrainingBatch', TrainingBatchController::class);
     Route::resource('/course', CourseController::class);
     Route::resource('/trainee', TraineeController::class);
-});
+// });
+

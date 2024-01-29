@@ -22,7 +22,7 @@ class EmployeeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'darrebni_id'=>['required','string','max:255'],
+            'darrebni_id'=>['string','max:255'],
             'first_name'=>['required','string','max:255'],
             'middle_name'=>['required','string','max:255'],
             'last_name'=>['required','string','max:255'],
@@ -33,8 +33,8 @@ class EmployeeRequest extends FormRequest
             'image'=>['required','string','max:255'],
             'note'=>['required','string','max:255'],
             'salary'=>['required','numeric'],
-            'brunch_id'=>['required','exists:brunches,id'],
-            'specializetion_id'=>['required','exists:specializetions,id'],
+            'brunch_id'=>['exists:brunches,id','sometimes','nullable'],
+            'specializetion_id'=>['exists:specializetions,id','sometimes','nullable'],
 
         ];
     }
