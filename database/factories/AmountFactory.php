@@ -21,7 +21,7 @@ class AmountFactory extends Factory
         $trainingbatchesIds = DB::table('training_batches')->pluck('id')->all();
         return [
             'trainee_id'=> $traineeIds[array_rand($traineeIds)], //fake()->numberBetween(1,10),
-            'training_batche_id'=>$trainingbatchesIds[array_rand($$trainingbatchesIds)], //fake()->numberBetween(1,10),
+            'training_batche_id'=>$trainingbatchesIds[array_rand($trainingbatchesIds)], //fake()->numberBetween(1,10),
             'amount'=>fake()->randomDigit(),
         ];
     }
