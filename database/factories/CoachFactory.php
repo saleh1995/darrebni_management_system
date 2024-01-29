@@ -31,7 +31,7 @@ class CoachFactory extends Factory
                 'notes'=>fake()->text(),
                 'salary_sp'=>fake()->randomDigit(),
                 'salary_us'=>fake()->randomDigit(),
-                'specializetion_id'=>1,
+                'specializetion_id'=>fake()->numberBetween(1,10),
                 'CoachID'=>'sp00',
 
         ];
