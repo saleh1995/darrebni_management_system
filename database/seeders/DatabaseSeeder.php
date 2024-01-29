@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             CoachSeeder::class,
             SpecializetionSeeder::class,
             AmountSeeder::class,
+            EmployeeSeeder::class,
+            BrunchSeeder::class,
         ]);
     }
 }
