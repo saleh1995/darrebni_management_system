@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
             CoachSeeder::class,
             TrainingBatchSeeder::class,
             AmountSeeder::class,
-
         ]);
     }
 }
