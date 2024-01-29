@@ -34,7 +34,7 @@ class CoachRequest extends FormRequest
             'salary_sp'=>['numeric'],
             'salary_us'=>['numeric'],
             'CoachID'=>['string'],
-           'specializetion_id'=>['sometimes','exists:specializetions,id'],
+            'specializetion_id'=>['sometimes', 'nullable','exists:specializetions,id'],
         ];
     }
 }

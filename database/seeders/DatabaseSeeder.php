@@ -14,14 +14,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Coach::factory(10)->create();
-
         $this->call([
-            CoachSeeder::class,
             SpecializetionSeeder::class,
+            TraineeSeeder::class,
+            UserSeeder::class,
+            CourseSeeder::class,
+            CoachSeeder::class,
             AmountSeeder::class,
+
         ]);
     }
 }
-
-
