@@ -13,6 +13,5 @@ class BrunchSeeder extends Seeder
     public function run(): void
     {
         Brunch::factory(10)->create();
-
     }
 }
