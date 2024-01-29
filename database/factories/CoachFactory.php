@@ -34,7 +34,7 @@ class CoachFactory extends Factory
                 'notes'=>fake()->text(),
                 'salary_sp'=>fake()->randomDigit(),
                 'salary_us'=>fake()->randomDigit(),
-                'specializetion_id'=>$specializetionIds[array_rand($$specializetionIds)],//fake()->numberBetween(1,10),
+                'specializetion_id'=>$specializetionIds[array_rand($specializetionIds)],//fake()->numberBetween(1,10),
                 'CoachID'=>'sp00',
 
         ];
