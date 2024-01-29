@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             BrunchSeeder::class,
             TrainingBatchSeeder::class,
+
         ]);
     }
 }
