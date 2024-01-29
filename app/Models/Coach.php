@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use App\Models\TrainingBatch;
+use Database\Factories\CoachFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class Coach extends Model
 {
@@ -39,4 +41,5 @@ class Coach extends Model
     {
         return $this->hasMany(TrainingBatch::class, 'coach_id');
     }
+
 }

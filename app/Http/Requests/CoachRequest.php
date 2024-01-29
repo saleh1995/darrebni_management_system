@@ -22,19 +22,19 @@ class CoachRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => ['string', 'max:255'],
-            'middle_name' => ['string', 'max:255'],
-            'last_name' => ['string', 'max:255'],
-            'phone' => ['numeric'],
-            'address' => ['string', 'max:255'],
-            'email' => ['email', 'unique:coaches'],
-            'birth_date' => ['date'],
-            'image' => ['string', 'max:255'],
-            'notes' => ['string', 'max:255'],
-            'salary_sp' => ['numeric'],
-            'salary_us' => ['numeric'],
-            'CoachID' => ['string'],
-            'specializetion_id' => ['sometimes', 'nullable'],
+            'first_name'=>['string','max:255'],
+            'middle_name'=>['string','max:255'],
+            'last_name'=>['string','max:255'],
+            'phone'=>['numeric'],
+            'address'=>['string','max:255'],
+            'email'=>['email','unique:coaches'],
+            'birth_date'=>['date'],
+            'image'=>['string','max:255'],
+            'notes'=>['string','max:255'],
+            'salary_sp'=>['numeric'],
+            'salary_us'=>['numeric'],
+            'CoachID'=>['string'],
+            'specializetion_id'=>['sometimes', 'nullable','exists:specializetions,id'],
         ];
     }
 }
