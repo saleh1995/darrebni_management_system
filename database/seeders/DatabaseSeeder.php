@@ -25,8 +25,7 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             BrunchSeeder::class,
 <<<<<<< HEAD
-            EmployeeSeeder::class,
-            BrunchSeeder::class,
+
 =======
 
 >>>>>>> dc3ee183e719d12d2b6a18e944c2b98710e743c9
