@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Coach;
 use Database\Seeders\CoachSeeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,8 @@ class CoachFactory extends Factory
      */
     public function definition(): array
     {
+        $specializetionIds = DB::table('specializetions')->pluck('id')->all();
+
 
         return[
                 'first_name'=>fake()->name(),
@@ -31,7 +34,7 @@ class CoachFactory extends Factory
                 'notes'=>fake()->text(),
                 'salary_sp'=>fake()->randomDigit(),
                 'salary_us'=>fake()->randomDigit(),
-                'specializetion_id'=>fake()->numberBetween(1,10),
+                'specializetion_id'=>$specializetionIds[array_rand($$specializetionIds)],//fake()->numberBetween(1,10),
                 'CoachID'=>'sp00',
 
         ];
