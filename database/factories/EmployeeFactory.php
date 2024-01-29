@@ -16,6 +16,10 @@ class EmployeeFactory extends Factory
      */
     public function definition(): array
     {
+
+
+        $specializetionIds = DB::table('specializetions')->pluck('id')->all();
+        $bruncheIds = DB::table('brunches')->pluck('id')->all();
         return [
         'darrebni_id'=>fake()->numberBetween(1,10),
         'first_name'=>fake()->name(),
@@ -27,8 +31,8 @@ class EmployeeFactory extends Factory
         'address'=>fake()->address(),
         'image'=>'images/YEvg1gIMAmC4AZ9OZcjXNwkoff2vY9hyE6R22sS4.jpg',
         'salary'=>fake()->randomDigit(),
-        'specializetion_id'=>fake()->numberBetween(1,10),
-        'brunch_id'=>fake()->numberBetween(1,10),
+        'specializetion_id'=>$specializetionIds[array_rand($specializetionIds)],
+        'brunch_id'=>$bruncheIds[array_rand($bruncheIds)],
         'note'=>fake()->text(),
         ];
     }
