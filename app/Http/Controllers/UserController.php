@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -53,7 +54,7 @@ class UserController extends Controller
         $data->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            // 'password' => Hash::make($request->password),
             'role' => $request->role,
         ]);
         return $this->ApiResponse(UserResource::make($data), 'user updated successfully');
@@ -70,5 +71,23 @@ class UserController extends Controller
             return $this->ApiResponse(null, 'user deleted successfully');
         }
         return $this->ApiResponse(null, 'cant  deleted successfully');
+    }
+
+
+    // Change Password
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|string|min:6',
+            'newPassword' => 'required|string|min:6',
+        ]);
+        $user = Auth::user();
+        if ($user && Hash::check($request->password, $user->password)) {
+            $user->password = Hash::make($request->newPassword);
+            $user->save();
+            return $this->ApiResponse(UserResource::make($user), 'user password updated successfully');
+        } else {
+            return $this->ApiResponse(null, 'old password not correct');
+        }
     }
 }

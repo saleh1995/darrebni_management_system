@@ -15,11 +15,10 @@ class EmployeeController extends Controller
 {
     use ApiResponseTrait;
 
-
     public function index()
     {
-        $employees=Employee::all();
-        return $this->apiResponse(EmployeeResource::collection($employees)->resource, 'All employees',200);
+        $employees = Employee::all();
+        return $this->apiResponse(EmployeeResource::collection($employees)->resource, 'All employees', 200);
     }
 
     public function store(EmployeeRequest $request)
@@ -40,28 +39,20 @@ class EmployeeController extends Controller
             'note' => $request->note,
         ]);
 
-
         return $this->apiResponse(EmployeeResource::make($employee)->resource, 'employee added successfully!', 200);
-
     }
     public function show(string $id)
     {
-        $employee=Employee::find($id);
+        $employee = Employee::find($id);
         return $this->apiResponse(EmployeeResource::make($employee)->resource, 'employee has been selected successfully!', 200);
-
-
     }
 
     public function delete(string $id)
     {
-        $brunch=Employee::find($id);
+        $brunch = Employee::find($id);
         $brunch->delete();
         return $this->apiResponse(EmployeeResource::make($brunch)->resource, 'Employee Deleted successfully!', 200);
-
     }
-
-
-
 
     public function update(EmployeeRequest $request, $id)
     {
@@ -75,16 +66,14 @@ class EmployeeController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
-            'image' => $request->image ?? $employee ->image,
+            'image' => $request->image ?? $employee->image,
             'salary' => $request->salary,
             'specializetion_id' => $request->specializetion_id,
             'brunch_id' => $request->brunch_id,
             'note' => $request->note,
-            ]);
+        ]);
 
-            $coach = EmployeeResource::make($employee);
-            return $this->apiResponse($coach, 'Updated employee');
+        $coach = EmployeeResource::make($employee);
+        return $this->apiResponse($coach, 'Updated employee');
     }
-
-
 }

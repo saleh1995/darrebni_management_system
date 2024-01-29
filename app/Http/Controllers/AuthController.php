@@ -31,7 +31,10 @@ class AuthController extends Controller
     public function logout()
     {
         $user = Auth::user();
-        $user->$this->currentAccessToken()->delete();
+        $user->currentAccessToken()->delete();
         return $this->ApiResponse(null, 'token deleted successfully');
     }
+
+
+
 }

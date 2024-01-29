@@ -29,6 +29,9 @@ class TrainingBatchController extends Controller
             'price' => $request->price,
             'currency' => $request->currency,
             'days' => json_encode($request->days, true),
+            'coach_id' => $request->coach_id,
+            'course_id' => $request->course_id,
+            'brunch_id' => $request->brunch_id,
         ]);
         return $this->ApiResponse(TrainingBatchResource::make($data), 'Training Batch Stored Successfully');
     }
@@ -53,7 +56,9 @@ class TrainingBatchController extends Controller
             'price' => $request->price,
             'currency' => $request->currency,
             'days' => json_encode($request->days, true),
-
+            'coach_id' => $request->coach_id,
+            'course_id' => $request->course_id,
+            'brunch_id' => $request->brunch_id,
         ]);
         return $this->ApiResponse(TrainingBatchResource::make($TrainingBatch), 'training Batch updated successfully');
     }

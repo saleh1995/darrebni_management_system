@@ -28,6 +28,7 @@ use App\Http\Controllers\SpecializetionController;
 
 // Auth Route
 Route::post('login', [AuthController::class, 'login']);
+Route::middleware('auth:sanctum')->post('user/changePassword', [UserController::class, 'updatePassword']);
 Route::middleware('auth:sanctum')->post('logout', [Authcontroller::class, 'logout']);
 // Route::post('register', [AuthController::class, 'register']);
 // user CRUD Resource
@@ -76,7 +77,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     ////amount routes
-    Route::prefix('payment')->group(function(){
+    Route::prefix('payment')->group(function () {
         Route::get('index', [AmountController::class, 'index']);
         Route::get('show/{id}', [AmountController::class, 'show']);
         Route::put('store', [AmountController::class, 'store']);
