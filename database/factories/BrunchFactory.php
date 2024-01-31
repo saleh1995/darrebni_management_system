@@ -19,7 +19,6 @@ class BrunchFactory extends Factory
         return [
             'prefix'=>'sp00',
             'name'=>fake()->name(),
-
         ];
     }
 }
