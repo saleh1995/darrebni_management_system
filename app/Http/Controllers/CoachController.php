@@ -21,7 +21,7 @@ class CoachController extends Controller
 
     public function index()
     {
-        $item = Coach::all();
+        $item = Coach::with('trainingBatches')->all();
         $coach = CoachReaource::collection($item);
         return $this->apiResponse($coach, 'All Coaches');
     }
@@ -59,7 +59,7 @@ class CoachController extends Controller
      */
     public function show($id)
     {
-        $item = Coach::findOrFail($id);
+        $item = Coach::with('trainingBatches')->findOrFail($id);
         $coach = CoachReaource::make($item);
         return $this->apiResponse($coach, 'Specific Coach');
     }

@@ -21,7 +21,7 @@ class TrainingBatchResource extends JsonResource
             'price' => $this->price,
             'currency' => $this->currency,
             'brunch' => $this->brunch,
-            'coach' => $this->coach,
+            // 'coach' => CoachReaource::collection($this->whenLoaded('coach')),
             'course' => $this->course,
             'days' =>json_decode($this->course),
 

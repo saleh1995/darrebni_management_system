@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -28,7 +29,13 @@ class CoachReaource extends JsonResource
         'salary_sp'=>$this->salary_sp,
         'salary_us'=>$this->salary_us,
         'CoachID'=>$this->CoachID,
-       'specializetion_id'=>$this->specializetion_id,
+       'specializetion'=>[
+              'id'=>$this->specializetion->id,
+              'name'=>$this->specializetion->name,
+       ],
+
+       'training_patches'=>TrainingBatchResource::collection($this->whenLoaded('trainingBatches')),
+
     ];
     }
 }
