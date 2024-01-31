@@ -19,10 +19,9 @@ class Employee extends Model
         'address',
         'image',
         'salary',
-        'speciality',
+        'specializetion_id',
         'brunch_id',
         'note',
-
     ];
 
     // public function employees()
@@ -30,14 +29,13 @@ class Employee extends Model
     //     return $this->belongsTo(Brunch::class);
     // }
 
-        public function specializetion()
+    public function specializetion()
     {
-        return $this->belongsTo(Specializetion::class,'specializetion_id');
+        return $this->belongsTo(Specializetion::class, 'specializetion_id');
     }
 
     public function brunch()
     {
-        return $this->belongsTo(Brunch::class,'brunch_id');
+        return $this->belongsTo(Brunch::class, 'brunch_id');
     }
-
 }

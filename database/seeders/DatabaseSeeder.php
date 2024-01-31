@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Coach;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +16,22 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => bcrypt(1234567),
-            'role' => 1,
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+
+        $this->call([
+            SpecializetionSeeder::class,
+            TraineeSeeder::class,
+            UserSeeder::class,
+            CourseSeeder::class,
+            CoachSeeder::class,
+            BrunchSeeder::class,
+            EmployeeSeeder::class,
+            TrainingBatchSeeder::class,
+            AmountSeeder::class,
         ]);
     }
 }

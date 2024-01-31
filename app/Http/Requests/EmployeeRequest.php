@@ -33,8 +33,8 @@ class EmployeeRequest extends FormRequest
             'image'=>['required','string','max:255'],
             'note'=>['required','string','max:255'],
             'salary'=>['required','numeric'],
-            'brunch_id'=>['required','exists:brunches,id'],
-            'specializetion_id'=>['required','exists:specializetions,id'],
+            'brunch_id'=>['sometimes','exists:brunches,id'],
+            'specializetion_id'=>['sometimes','exists:specializetions,id'],
 
         ];
     }

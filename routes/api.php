@@ -25,15 +25,17 @@ use App\Http\Controllers\SpecializetionController;
 |
 */
 
+
 // Auth Route
 Route::post('login', [AuthController::class, 'login']);
+Route::middleware('auth:sanctum')->post('user/changePassword', [UserController::class, 'updatePassword']);
 Route::middleware('auth:sanctum')->post('logout', [Authcontroller::class, 'logout']);
 // Route::post('register', [AuthController::class, 'register']);
 // user CRUD Resource
 Route::middleware('auth:sanctum')->resource('/user', UserController::class);
 
 
-//Global Group
+// //Global Group
 Route::middleware('auth:sanctum')->group(function () {
 
     // Brunch
@@ -75,12 +77,21 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     ////amount routes
-    Route::prefix('payment')->group(function(){
+    Route::prefix('payment')->group(function () {
         Route::get('index', [AmountController::class, 'index']);
         Route::get('show/{id}', [AmountController::class, 'show']);
         Route::put('store', [AmountController::class, 'store']);
         Route::put('update/{id}', [AmountController::class, 'update']);
         Route::delete('delete/{id}', [AmountController::class, 'delete']);
+    });
+
+    //specializetion
+    Route::prefix('specializetion')->group(function () {
+        Route::get('index', [SpecializetionController::class, 'index']);
+        Route::get('show/{id}', [SpecializetionController::class, 'show']);
+        Route::post('store', [SpecializetionController::class, 'store']);
+        Route::put('update/{id}', [SpecializetionController::class, 'update']);
+        Route::delete('delete/{id}', [SpecializetionController::class, 'delete']);
     });
 
     ////Image routes
