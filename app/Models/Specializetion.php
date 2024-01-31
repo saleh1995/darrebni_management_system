@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Specializetion extends Model
 {
@@ -12,18 +13,18 @@ class Specializetion extends Model
         'name',
     ];
 
-    public function coaches()
+    public function coaches(): HasMany
     {
         return $this->hasMany(Coach::class, 'specializetion_id');
     }
 
-    public function employees()
+    public function employees(): HasMany
     {
-        return $this->hasMany(Employee::class);
+        return $this->hasMany(Employee::class, 'specializetion_id');
     }
 
-    public function trainees()
+    public function trainees(): HasMany
     {
-        return $this->hasMany(Trainee::class);
+        return $this->hasMany(Trainee::class, 'specializetion_id');
     }
 }

@@ -14,8 +14,8 @@ class EmployeeResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-           return [
-            'id'=>$this->id,
+        return [
+            'id' => $this->id,
             'darrebni_id' => $this->darrebni_id,
             'first_name' => $this->first_name,
             'middle_name' => $this->middle_name,
@@ -26,12 +26,9 @@ class EmployeeResource extends JsonResource
             'address' => $this->address,
             'image' => $this->image,
             'salary' => $this->salary,
-            'speciality' => $this->speciality,
-            'brunch_id' => $this->brunch_id,
             'note' => $this->note,
-
-
-
+            'specializetion' => SpecializetionResource::make($this->whenLoaded('specializetion')),
+            'brunch' => BrunchResource::make($this->whenLoaded('brunch')),
         ];
     }
 }

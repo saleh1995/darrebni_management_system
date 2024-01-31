@@ -17,14 +17,16 @@ class TraineeResource extends JsonResource
         return [
             'id' => $this->id,
             'first_name_ar' => $this->first_name_ar,
-            'middle_name_ar'=> $this->middle_name_ar,
+            'middle_name_ar' => $this->middle_name_ar,
             'last_name_ar' => $this->last_name_ar,
             'first_name_en' => $this->first_name_en,
-            'middle_name_en'=> $this->middle_name_en,
+            'middle_name_en' => $this->middle_name_en,
             'last_name_en' => $this->last_name_en,
             'email' => $this->email,
             'phone_number' => $this->phone_number,
             'date' => $this->date,
+            'amounts' => AmountResource::collection($this->whenLoaded('amounts')),
+            'specializetion' => SpecializetionResource::make($this->whenLoaded('specializetion')),
         ];
     }
 }

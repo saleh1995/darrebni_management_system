@@ -19,6 +19,7 @@ class Trainee extends Model
         'email',
         'phone_number',
         'date',
+        'specializetion_id',
     ];
 
     public function amounts(): HasMany
@@ -27,7 +28,7 @@ class Trainee extends Model
     }
     public function specializetion()
     {
-        return $this->belongsTo(Specializetion::class);
+        return $this->belongsTo(Specializetion::class,'specializetion_id');
     }
 
 

@@ -15,7 +15,7 @@ class BrunchController extends Controller
 
     public function index()
     {
-        $brunches=Brunch::all();
+        $brunches=Brunch::with(['trainingBatches','employees'])->get();
         // return $brunches;
         return $this->apiResponse(BrunchResource::collection($brunches)->resource, 'All Brunches',200);
     }
@@ -39,7 +39,7 @@ class BrunchController extends Controller
     }
     public function show(string $id)
     {
-        $brunch=Brunch::find($id);
+        $brunch=Brunch::with(['trainingBatches','employees'])->findOrFail($id);
         return $this->apiResponse(BrunchResource::make($brunch)->resource, 'Brunch has been selected successfully!', 200);
 
 
