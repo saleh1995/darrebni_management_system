@@ -27,8 +27,18 @@ class EmployeeResource extends JsonResource
             'image' => $this->image,
             'salary' => $this->salary,
             'note' => $this->note,
-            'specializetion' => SpecializetionResource::make($this->whenLoaded('specializetion')),
-            'brunch' => BrunchResource::make($this->whenLoaded('brunch')),
+            'certificate'=>[
+                'id'=>$this->specializetion->id,
+                'name'=>$this->specializetion->name,
+            ],
+            'branch'=>[
+                'id'=>$this->brunch->id,
+                'prefix'=>$this->brunch->prefix,
+                'name'=>$this->brunch->name,
+            ],
+
+
+
         ];
     }
 }

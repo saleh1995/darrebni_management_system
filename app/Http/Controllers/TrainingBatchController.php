@@ -15,7 +15,7 @@ class TrainingBatchController extends Controller
      */
     public function index()
     {
-        $data = TrainingBatch::with(['brunch', 'course', 'coach','amounts'])->get();
+        $data = TrainingBatch::with('brunch')->with('course')->get();
         return $this->ApiResponse(TrainingBatchResource::collection($data), 'All Training Batches');
     }
 
