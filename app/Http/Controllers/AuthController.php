@@ -17,7 +17,7 @@ class AuthController extends Controller
     {
         $user = User::where('email', $request->email)->first();
         if ($user && Hash::check($request->password, $user->password)) {
-            $user->tokens()->delete();
+            // $user->tokens()->delete();
             $token = $user->createToken($request->userAgent())->plainTextToken;
             $data = [
                 'user' => UserResource::make($user),

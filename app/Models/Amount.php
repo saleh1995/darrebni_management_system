@@ -12,8 +12,8 @@ class Amount extends Model
     use HasFactory;
 
     protected $fillable = [
-        'trainee_id',
         'amount',
+        'trainee_id',
         'training_batche_id'
     ];
 

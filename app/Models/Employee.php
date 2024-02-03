@@ -19,9 +19,9 @@ class Employee extends Model
         'address',
         'image',
         'salary',
+        'note',
         'specializetion_id',
         'brunch_id',
-        'note',
     ];
 
     // public function employees()

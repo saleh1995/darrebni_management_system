@@ -15,8 +15,11 @@ class SpecializetionResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'=>$this->id,
-            'name'=>$this->name,
+            'id' => $this->id,
+            'name' => $this->name,
+            'coaches' => CoachReaource::collection($this->whenLoaded('coaches')),
+            'employees' => EmployeeResource::collection($this->whenLoaded('employees')),
+            'trainees' => TraineeResource::collection($this->whenLoaded('trainees')),
         ];
     }
 }

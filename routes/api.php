@@ -36,7 +36,7 @@ Route::middleware('auth:sanctum')->resource('/user', UserController::class);
 
 
 // //Global Group
-//Route::middleware('auth:sanctum')->group(function () {
+// Route::middleware('auth:sanctum')->group(function () {
 
     // Brunch
     Route::prefix('brunch')->group(function () {
@@ -77,7 +77,7 @@ Route::middleware('auth:sanctum')->resource('/user', UserController::class);
 
 
     ////amount routes
-    Route::prefix('payment')->group(function () {
+    Route::prefix('amount')->group(function () {
         Route::get('index', [AmountController::class, 'index']);
         Route::get('show/{id}', [AmountController::class, 'show']);
         Route::put('store', [AmountController::class, 'store']);
@@ -101,4 +101,4 @@ Route::middleware('auth:sanctum')->resource('/user', UserController::class);
     Route::resource('/TrainingBatch', TrainingBatchController::class);
     Route::resource('/course', CourseController::class);
     Route::resource('/trainee', TraineeController::class);
-//});
+// });

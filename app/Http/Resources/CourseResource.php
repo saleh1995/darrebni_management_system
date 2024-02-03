@@ -14,10 +14,12 @@ class CourseResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        // dd($this->trainingBatches);
         return [
             'id' => $this->id,
-            'name'=>$this->name,
-            'prefix'=>$this->prefix,
+            'name' => $this->name,
+            'prefix' => $this->prefix,
+            'trainingBatches'=>TrainingBatchResource::collection($this->whenLoaded('trainingBatches')),
         ];
     }
 }

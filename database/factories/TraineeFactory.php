@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,6 +17,7 @@ class TraineeFactory extends Factory
      */
     public function definition(): array
     {
+        $specializetion_id = DB::table('trainees')->pluck('id')->all();
         return [
             'first_name_ar' => fake()->name(),
             'middle_name_ar' => fake()->name(),
@@ -26,6 +28,7 @@ class TraineeFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'phone_number' => fake()->phoneNumber(),
             'date' => fake()->dateTimeThisMonth(),
+            'specializetion_id' =>$specializetion_id[array_rand($specializetion_id)],
         ];
     }
 }

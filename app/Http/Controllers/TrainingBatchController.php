@@ -42,8 +42,8 @@ class TrainingBatchController extends Controller
      */
     public function show(TrainingBatch $TrainingBatch)
     {
-        // $data = TrainingBatch::findOrFail($trainingBatch->id);
-        return $this->ApiResponse(TrainingBatchResource::make($TrainingBatch), 'training batch Showed Successfully');
+        $data = TrainingBatch::with(['brunch', 'course', 'coach','amounts'])->findOrFail($TrainingBatch->id);
+        return $this->ApiResponse(TrainingBatchResource::make($data), 'training batch Showed Successfully');
     }
 
     /**

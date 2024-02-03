@@ -17,7 +17,7 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::with(['brunch', 'specializetion'])->get();
         return $this->apiResponse(EmployeeResource::collection($employees)->resource, 'All employees', 200);
     }
 
@@ -43,7 +43,7 @@ class EmployeeController extends Controller
     }
     public function show(string $id)
     {
-        $employee = Employee::find($id);
+        $employee = Employee::with(['brunch', 'specializetion'])->findOrFail($id);
         return $this->apiResponse(EmployeeResource::make($employee)->resource, 'employee has been selected successfully!', 200);
     }
 

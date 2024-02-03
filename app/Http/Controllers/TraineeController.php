@@ -16,7 +16,7 @@ class TraineeController extends Controller
      */
     public function index()
     {
-        $data = Trainee::all();
+        $data = Trainee::with(['amounts','specializetion'])->get();
         return $this->ApiResponse(TraineeResource::collection($data), 'All Trainee');
     }
 
@@ -45,7 +45,7 @@ class TraineeController extends Controller
      */
     public function show(Trainee $trainee)
     {
-        $data = trainee::findOrFail($trainee->id);
+        $data = trainee::with(['amounts','specializetion'])->findOrFail($trainee->id);
         return $this->ApiResponse(TraineeResource::make($data), 'Trainee Showed Successfully');
     }
 

@@ -16,7 +16,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $data = Course::all();
+        $data = Course::with('trainingBatches')->get();
         return $this->ApiResponse(CourseResource::collection($data), 'All Courses');
     }
 
@@ -37,7 +37,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        $data = Course::findOrFail($course->id);
+        $data = Course::with('trainingBatches')->findOrFail($course->id);
         return $this->ApiResponse(CourseResource::make($data), 'Course Showed Successfully');
     }
 

@@ -15,10 +15,10 @@ class AmountResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'=>$this->id,
-            'trainee_id'=>$this->trainee_id,
-            'training_batche_id'=>$this->training_batche_id,
-            'amount'=>$this->amount,
+            'id' => $this->id,
+            'amount' => $this->amount,
+            'trainee' => TraineeResource::make($this->whenLoaded('trainee')),
+            'training_batche' => TraineeResource::make($this->whenLoaded('trainingBatch')),
         ];
     }
 }
