@@ -20,7 +20,7 @@ class TrainingBatchResource extends JsonResource
             'TrainingBatchID' => $this->TrainingBatchID,
             'price' => $this->price,
             'currency' => $this->currency,
-            // 'days' => json_decode($this->course),// ???
+            'days' => json_decode($this->days),// ???
             'course' => CourseResource::make($this->whenLoaded('course')),
             'brunch' => BrunchResource::make($this->whenLoaded('brunch')),
             'coach' => CoachReaource::make($this->whenLoaded('coach')),
