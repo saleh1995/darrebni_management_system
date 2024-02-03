@@ -15,9 +15,10 @@ class BrunchController extends Controller
 
     public function index()
     {
-        $brunches=Brunch::all();
+        $item=Brunch::with('trainingBatches')->get();
+        $brunch=BrunchResource::collection($item);
         // return $brunches;
-        return $this->apiResponse(BrunchResource::collection($brunches)->resource, 'All Brunches',200);
+        return $this->apiResponse($brunch, 'All Brunches');
     }
 
     public function store(BrunchRequest $request)

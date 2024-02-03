@@ -18,6 +18,7 @@ class BrunchResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'prefix' => $this->prefix,
+            'training_batches'=>TrainingBatchResource::collection($this->whenLoaded('trainingBatches')),
         ];
     }
 }

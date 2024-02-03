@@ -29,6 +29,15 @@ class EmployeeResource extends JsonResource
             'speciality' => $this->speciality,
             'brunch_id' => $this->brunch_id,
             'note' => $this->note,
+            'certificate'=>[
+                'id'=>$this->specializetion->id,
+                'name'=>$this->specializetion->name,
+            ],
+            'branch'=>[
+                'id'=>$this->brunch->id,
+                'prefix'=>$this->brunch->prefix,
+                'name'=>$this->brunch->name,
+            ],
 
 
 
