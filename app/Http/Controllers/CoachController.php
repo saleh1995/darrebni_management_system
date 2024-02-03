@@ -105,4 +105,12 @@ class CoachController extends Controller
         $item->delete();
         return $this->apiResponse(null, 'Deleted Coach');
     }
+
+
+    public function coachesCount()
+    {
+        $brunch=Coach::all()->count();
+        return $this->apiResponse($brunch, 'All Coaches!', 200);
+
+    }
 }

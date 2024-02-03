@@ -61,4 +61,14 @@ class BrunchController extends Controller
         return $this->apiResponse(BrunchResource::make($brunch)->resource, 'Brunch Deleted successfully!', 200);
 
     }
+
+
+    public function brunchesCount()
+    {
+        $brunch=Brunch::all()->count();
+        return $this->apiResponse($brunch, 'All Brunches!', 200);
+
+    }
+
+
 }

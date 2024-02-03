@@ -45,6 +45,8 @@ Route::middleware('auth:sanctum')->resource('/user', UserController::class);
         Route::get('/show/{id}', [BrunchController::class, 'show']);
         Route::delete('/delete/{id}', [BrunchController::class, 'delete']);
         Route::put('/update/{id}', [BrunchController::class, 'update']);
+        Route::get('/count', [BrunchController::class, 'brunchesCount']);
+
     });
 
     // employee
@@ -54,6 +56,8 @@ Route::middleware('auth:sanctum')->resource('/user', UserController::class);
         Route::get('/show/{id}', [EmployeeController::class, 'show']);
         Route::delete('/delete/{id}', [EmployeeController::class, 'delete']);
         Route::put('/update/{id}', [EmployeeController::class, 'update']);
+        Route::get('/count', [EmployeeController::class, 'employeesCount']);
+
     });
 
     // specializetion Route
@@ -73,6 +77,8 @@ Route::middleware('auth:sanctum')->resource('/user', UserController::class);
         Route::put('update/{id}', [CoachController::class, 'update']);
         Route::delete('delete/{id}', [CoachController::class, 'delete']);
         Route::post('imageApi', [CoachController::class, 'imageApi']);
+        Route::get('count', [CoachController::class, 'coachesCount']);
+
     });
 
 
@@ -101,4 +107,8 @@ Route::middleware('auth:sanctum')->resource('/user', UserController::class);
     Route::resource('/TrainingBatch', TrainingBatchController::class);
     Route::resource('/course', CourseController::class);
     Route::resource('/trainee', TraineeController::class);
+
+    Route::get('/trianee_statistics/count', [TraineeController::class,'traineesCount']);
+
+
 // });

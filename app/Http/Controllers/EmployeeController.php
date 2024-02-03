@@ -76,4 +76,12 @@ class EmployeeController extends Controller
         $coach = EmployeeResource::make($employee);
         return $this->apiResponse($coach, 'Updated employee');
     }
+
+
+    public function employeesCount()
+    {
+        $brunch=Employee::all()->count();
+        return $this->apiResponse($brunch, 'All Employees!', 200);
+
+    }
 }

@@ -95,5 +95,10 @@ class TraineeController extends Controller
 
 
 
+    public function traineesCount()
+    {
+        $traineecount=Trainee::all()->count();
+        return $this->apiResponse($traineecount, 'All Trainees!', 200);
+    }
 
 }
