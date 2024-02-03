@@ -33,3 +33,4 @@ class CoachReaource extends JsonResource
         ];
     }
 }
+
