@@ -17,7 +17,7 @@ class TraineeFactory extends Factory
      */
     public function definition(): array
     {
-        $specializetion_id = DB::table('trainees')->pluck('id')->all();
+        $specializetion_id = DB::table('specializetions')->pluck('id')->all();
         return [
             'first_name_ar' => fake()->name(),
             'middle_name_ar' => fake()->name(),
